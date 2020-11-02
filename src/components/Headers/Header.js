@@ -8,8 +8,10 @@ function Header(props) {
             <img src='https://www.pngkey.com/png/full/19-195490_png-poop-black-and-white-download-poop-emoji.png'/>
 
             <div className={s.loginBlock}>
-                {props.isAuth ? props.login
-                    : <NavLink to={'/login'}>Login</NavLink>}
+                {props.isAuth
+                    ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
+                    : <NavLink to={'/login'}>Login</NavLink>
+                    }
             </div>
         </header>
     )
