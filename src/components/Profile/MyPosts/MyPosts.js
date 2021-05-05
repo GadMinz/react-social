@@ -3,10 +3,10 @@ import s from './MyPosts.module.css'
 import Post from "./Posts/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
-import {FormElement} from "../../common/FormsControls/FormsControls";
+import {Textarea} from "../../common/FormsControls/FormsControls";
 
 const maxLength10 = maxLengthCreator(10)
-const Textarea = FormElement("textarea");
+
 
 const AddNewPostForm = (props) => {
     return(
@@ -26,7 +26,7 @@ const AddNewPostFormRedux = reduxForm({form: 'profileAddNewPostForm'})(AddNewPos
 
 const MyPosts = React.memo(props => {
 
-    let postsElements = props.posts.map((p,i) => <Post message={p.message} likesCount={p.likesCount} key={i}/>)
+    let postsElements = [...props.posts].reverse().map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount} />)
 
     let newPostElement = React.createRef()
 
